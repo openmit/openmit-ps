@@ -1,0 +1,10 @@
+# Executables 
+bin/ 
+lib/ 
+
+# CMake 
+build/ 
+
+# third_party 
+third_party/makefile/downloads/
+third_party/makefile/gen/
