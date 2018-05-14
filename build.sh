@@ -9,15 +9,15 @@ GCC=`which gcc`
 GXX=`which g++`
 
 # Check deps 
-source $PROJECT_DIR/cmake/deps.conf
-if [[ "${SEASTAR_HOME}" == "" ]]; then 
-  echo "you need to specify seastar project path in cmake/deps.conf"
+source $PROJECT_DIR/cmake/seastar.conf
+if [[ "${SEASTAR}" == "" ]]; then 
+  echo "you need to specify seastar project path in cmake/seastar.conf"
   exit 1
 fi 
-echo "SEASTAR_HOME: $SEASTAR_HOME"
+echo "SEASTAR: $SEASTAR"
 
 # Env variable 
-export SEASTAR_HOME
+export SEASTAR
 
 # Build openmit-ps 
 if [ "X$is_all_build" == "X1" ] || [ ! -d $PROJECT_DIR/build ]; then

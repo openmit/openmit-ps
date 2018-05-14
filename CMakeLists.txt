@@ -23,20 +23,20 @@ else ()
 endif () 
 
 # seastar check 
-message(STATUS "seastar path: $ENV{SEASTAR_HOME}")
+message(STATUS "seastar path: $ENV{SEASTAR}")
 
 # include 
 include_directories(
-  $ENV{SEASTAR_HOME}
-  $ENV{SEASTAR_HOME}/build/release/c-ares
-  $ENV{SEASTAR_HOME}/build/release/gen
-  $ENV{SEASTAR_HOME}/fmt
+  $ENV{SEASTAR}
+  $ENV{SEASTAR}/build/release/c-ares
+  $ENV{SEASTAR}/build/release/gen
+  $ENV{SEASTAR}/fmt
   )
 
 # Library directory
 link_directories(
-  $ENV{SEASTAR_HOME}/build/release
-  $ENV{SEASTAR_HOME}/build/release/fmt/fmt
+  $ENV{SEASTAR}/build/release
+  $ENV{SEASTAR}/build/release/fmt/fmt
   )
 
 # Link_libraries name
@@ -76,4 +76,5 @@ set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR})
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin) 
 
 # Add subdirectory 
-add_subdirectory(test)
+#add_subdirectory(test/seastar)
+add_subdirectory(test/thrift)
