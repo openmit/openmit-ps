@@ -104,13 +104,16 @@ class CalculatorCloneFactory : virtual public CalculatorIfFactory {
 };
 
 int main(int argc, char** argv) {
-  //stdcxx::shared_ptr<CalculatorProcessorFactory> handler(stdcxx::make_shared<CalculatorCloneFactory>());
   stdcxx::shared_ptr<TServerSocket> socket(new TServerSocket(9090));
   stdcxx::shared_ptr<TBufferedTransportFactory> transport(new TBufferedTransportFactory());
-  stdcxx::shared_ptr<TBinaryProtocolFactory> protocol(new TBinaryProtocolFactory()); 
+  stdcxx::shared_ptr<TBinaryProtocolFactory> protocol(new TBinaryProtocolFactory());
 
-  TThreadedServer server(stdcxx::make_shared<CalculatorProcessorFactory>(stdcxx::make_shared<CalculatorCloneFactory>()),
-                         socket, transport, protocol);
+  // TThreadedServer server(stdcxx::make_shared<CalculatorProcessorFactory>(stdcxx::make_shared<CalculatorCloneFactory>()),
+  //                        socket, transport, protocol); 
+
+  stdcxx::shared_ptr<CalculatorCloneFactory> calculatorClone(new CalculatorCloneFactory());
+  stdcxx::shared_ptr<CalculatorProcessorFactory> processor(new CalculatorProcessorFactory(calculatorClone));
+  TThreadedServer server(processor, socket, transport, protocol);
 
   std::cout << "Starting the server ..." << std::endl;
   server.serve();
