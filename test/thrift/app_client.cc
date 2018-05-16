@@ -17,7 +17,8 @@ using namespace shared;
 int main(int argc, char** argv) {
   std::string hostname("localhost");
   int port = 9090;
-  stdcxx::shared_ptr<TTransport> socket(new TSocket(hostname, port));
+  //stdcxx::shared_ptr<TTransport> socket(new TSocket(hostname, port));
+  stdcxx::shared_ptr<TSocket> socket(new TSocket(hostname, port));
   stdcxx::shared_ptr<TTransport> transport(new TBufferedTransport(socket));
   stdcxx::shared_ptr<TProtocol> protocol(new TBinaryProtocol(transport)); 
   CalculatorClient client(protocol);

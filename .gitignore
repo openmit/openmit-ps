@@ -1,3 +1,9 @@
+# Libraries 
+*thrift*.a
+
+# Thrift 
+gen-cpp/
+
 # Executables 
 bin/ 
 lib/ 
